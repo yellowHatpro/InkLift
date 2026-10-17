@@ -1,0 +1,5 @@
+.build/
+*.pdf
+*.goodnotes
+samples/debug-*/
+.DS_Store
