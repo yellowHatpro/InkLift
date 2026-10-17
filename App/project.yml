@@ -1,0 +1,42 @@
+name: InkLift
+options:
+  bundleIdPrefix: dev.ashutosh
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "15.0"
+  createIntermediateGroups: true
+packages:
+  InkCore:
+    path: ..
+targets:
+  InkLift:
+    type: application
+    platform: iOS
+    sources:
+      - path: InkLift
+    dependencies:
+      - package: InkCore
+        product: InkCore
+    info:
+      path: InkLift/Info.plist
+      properties:
+        CFBundleDisplayName: InkLift
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        NSCameraUsageDescription: InkLift photographs your handwritten page to turn it into ink.
+        NSPhotoLibraryUsageDescription: InkLift reads photos of handwritten pages you choose.
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "2"
+        SWIFT_VERSION: "5.9"
+        GENERATE_INFOPLIST_FILE: false
+        ENABLE_PREVIEWS: true
+        CODE_SIGN_STYLE: Automatic
