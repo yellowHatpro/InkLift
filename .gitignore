@@ -5,3 +5,4 @@ samples/debug-*/
 .DS_Store
 App/InkLift.xcodeproj/
 App/InkLift/Info.plist
+samples/*.json

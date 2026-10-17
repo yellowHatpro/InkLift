@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  mac:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: swift build -c release
+      - name: Test
+        run: ./scripts/test.sh
+      - name: Smoke test CLI
+        run: |
+          INKLIFT_SAMPLES_DIR=$PWD/samples ./scripts/test.sh --filter SampleWriter
+          .build/release/inklift samples/hello.png -o hello.goodnotes --no-rectify
+          .build/release/inklift samples/hello.png -o hello.pdf --no-rectify
+          unzip -tq hello.goodnotes
+      - name: Bundle Mac app
+        run: ./scripts/make-mac-app.sh "$RUNNER_TEMP"

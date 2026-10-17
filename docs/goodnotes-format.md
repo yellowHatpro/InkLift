@@ -6,7 +6,7 @@ for Mac on 2026-10-17: files written by `GoodNotesExporter` open and render as n
 
 Sources:
 - Read-side parser and wiki: https://github.com/Kaih1825/parser-for-goodnotes (MIT).
-  `reference-ex2.goodnotes` is its `web/assets/ex2.goodnotes` sample, used as the template.
+  Its `web/assets/ex2.goodnotes` sample supplied the template's index and event records.
 - Our own dumps: `scripts/gn_records.py`, `scripts/gn_strokes.py` (need the parser's venv).
 
 ## Container
@@ -20,7 +20,7 @@ ZIP archive. Members in the template document:
 | `index.attachments.pb` | f1 attachment uuid, f2 `attachments/<uuid>` | copied |
 | `index.search.pb` | uuid -> `search/<uuid>` map | copied |
 | `index.events.pb` | event log: document create (f30, title), attachment add (f6), page add (f2, page size 834.2 x 1079 GN units), template (f54), ... | copied |
-| `attachments/<uuid>` | background PDF, MediaBox 455.04 x 588.45 pt | copied |
+| `attachments/<uuid>` | background PDF, MediaBox 455.04 x 588.45 pt | our own dot grid, `scripts/make-template-pdf.swift` (verified: Goodnotes imports it) |
 | `search/<page uuid>` | handwriting search index | 5-byte stub `04 10 01 1a 00` |
 | `notes/<page uuid>` | stroke stream | written |
 | `thumbnail.jpg` | page preview | rendered from strokes |
