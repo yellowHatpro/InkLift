@@ -17,6 +17,7 @@ handwriting as ink.
 | 1 | `InkCore` package: rectify -> binarize -> skeletonize -> trace -> smooth -> `Stroke` | done fe093f8 | `scripts/test.sh`: 13 tests pass |
 | 2 | `PDFExporter`: strokes -> vector PDF | done fe093f8 | `docs/evidence/2026-10-17-pdf-in-goodnotes.png` (Goodnotes 7.1.18 for Mac showing samples/meeting.pdf) |
 | 3 | iPad app (SwiftUI, PhotosPicker/camera, PencilKit preview, share sheet) | written, not built | sources parse; this Mac has only Command Line Tools (no iOS SDK). Build in Xcode: `cd App && xcodegen && open InkLift.xcodeproj` |
+| 3b | Mac app (`Sources/InkLiftMac`, SwiftUI + AppKit): drop photo, preview ink, Export GoodNotes/PDF, Open in Goodnotes | done | `scripts/make-mac-app.sh` builds `~/Applications/InkLift.app`; launched with samples/hello.png, 20 strokes, export enabled |
 | 4 | `GoodNotesExporter`: write `.goodnotes` with native ink | done | opens in Goodnotes 7.1.18, strokes render as ink on the template page: `docs/evidence/2026-10-17-goodnotes-native-ink-swift.png`; reference parser decodes all strokes. Editability (lasso/erase) still to be confirmed by hand |
 
 ## Layout
@@ -50,6 +51,13 @@ swift build -c release
 .build/release/inklift photo.jpg -o notes.pdf       # flat PDF
 .build/release/inklift photo.jpg -o x.pdf --debug-dir dbg   # writes 1-rectified 2-binary 3-skeleton 4-strokes PNGs
 open -a Goodnotes notes.goodnotes
+```
+
+## Run (Mac app, no Xcode needed)
+
+```
+./scripts/make-mac-app.sh        # builds ~/Applications/InkLift.app
+open ~/Applications/InkLift.app  # or double-click it; drop a photo in, Export GoodNotes...
 ```
 
 ## Run (iPad app, needs Xcode)
