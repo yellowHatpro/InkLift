@@ -17,7 +17,7 @@ handwriting as ink.
 | 1 | `InkCore` package: rectify -> binarize -> skeletonize -> trace -> smooth -> `Stroke` | done fe093f8 | `scripts/test.sh`: 13 tests pass |
 | 2 | `PDFExporter`: strokes -> vector PDF | done fe093f8 | `docs/evidence/2026-10-17-pdf-in-goodnotes.png` (Goodnotes 7.1.18 for Mac showing samples/meeting.pdf) |
 | 3 | iPad app (SwiftUI, PhotosPicker/camera, PencilKit preview, share sheet) | todo | builds in Xcode (needs Xcode on this Mac) |
-| 4 | `GoodNotesExporter`: write `.goodnotes` with editable ink | todo | open in Goodnotes.app, edit a stroke |
+| 4 | `GoodNotesExporter`: write `.goodnotes` with native ink | done | opens in Goodnotes 7.1.18, strokes render as ink on the template page: `docs/evidence/2026-10-17-goodnotes-native-ink-swift.png`; reference parser decodes all strokes. Editability (lasso/erase) still to be confirmed by hand |
 
 ## Layout
 

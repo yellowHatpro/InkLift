@@ -9,7 +9,7 @@ let package = Package(
         .executable(name: "inklift", targets: ["inklift"]),
     ],
     targets: [
-        .target(name: "InkCore"),
+        .target(name: "InkCore", resources: [.copy("Resources/goodnotes-template")]),
         .executableTarget(name: "inklift", dependencies: ["InkCore"]),
         .testTarget(name: "InkCoreTests", dependencies: ["InkCore"]),
     ]

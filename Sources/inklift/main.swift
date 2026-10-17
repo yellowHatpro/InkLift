@@ -52,6 +52,10 @@ do {
     switch outURL.pathExtension.lowercased() {
     case "goodnotes":
         try GoodNotesExporter().write(doc, to: outURL)
+    case "json":
+        let enc = JSONEncoder()
+        enc.outputFormatting = [.sortedKeys]
+        try enc.encode(doc).write(to: outURL)
     default:
         try PDFExporter().write(doc, to: outURL)
     }
